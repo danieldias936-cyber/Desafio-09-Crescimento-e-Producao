@@ -1,0 +1,90 @@
+Base lida de dados/base_consolidada_sitio.csv : 43 medições, 9 parcelas
+Pares de medições sucessivas: 34 
+
+Equação 1 (área basal):
+     Estimate Std. Error  t value     Pr(>|t|)
+x1 2.81707331 0.34585200 8.145314 2.653120e-09
+x2 0.02365208 0.01519644 1.556423 1.294436e-01
+Métricas na escala de B2:
+         n         r2        syx    syx_pct vies_medio       rmse   rmse_pct 
+   34.0000     0.9679     0.5123     3.5909    -0.0276     0.4970     3.4837 
+
+Equação 1 reduzida (sem o termo de sítio):
+   Estimate Std. Error  t value     Pr(>|t|)
+x1 3.353547 0.02900756 115.6094 1.255828e-44
+
+Equação 2 (volume):
+               Estimate  Std. Error   t value     Pr(>|t|)
+(Intercept)  1.30501226 0.178219029  7.322519 7.762315e-09
+I(1/id)     -1.13194874 0.264067821 -4.286583 1.151727e-04
+s            0.01601782 0.005859033  2.733868 9.363559e-03
+log(b)       1.25512893 0.073034706 17.185377 8.576852e-20
+Métricas na escala de V:
+         n         r2        syx    syx_pct vies_medio       rmse   rmse_pct 
+   43.0000     0.9871     5.2068     4.9690    -0.0126     4.9587     4.7322 
+
+Equação 3 (V2 projetado a partir de B1) nos 34 pares:
+         n         r2        syx    syx_pct vies_medio       rmse   rmse_pct 
+   34.0000     0.9537     8.2346     6.8456    -0.4481     7.4728     6.2123 
+Diferença máxima entre as formas sequencial e analítica: 0 m³/ha
+
+Desvio médio de V2 projetado por parcela (%):
+ id_parcela  s desvio_v2_pct
+      T1-P1 20          4.96
+      T1-P5 20         -1.24
+      T2-P2 22         -5.85
+      T2-P3 22         -2.77
+      T2-P5 22         -1.14
+      T3-P1 24         10.02
+      T3-P2 24         -1.70
+      T3-P3 24          4.70
+      T6-P1 26         -2.64
+
+Teste na parcela T6-P1 (projeção a partir da 1ª medição):
+ id_parcela idade  b_obs b_proj  v_obs v_proj dif_v_pct
+      T6-P1 2.692  9.781  9.781  63.65  64.27    0.9791
+      T6-P1 3.706 14.005 13.404 121.27 107.10  -11.6804
+      T6-P1 4.719 16.848 16.041 155.68 143.28   -7.9621
+      T6-P1 5.736 18.619 18.022 174.00 173.03   -0.5553
+      T6-P1 6.372 20.260 19.022 195.16 188.85   -3.2328
+
+Condição inicial da prognose:
+ sitio  b0_m2ha n_parcelas i0_anos
+    20 6.485610          2    2.62
+    22 6.854897          3    2.62
+    24 8.933883          3    2.62
+    26 9.780600          1    2.62
+
+Invariância ao caminho (S = 20 ): B direto = 18.23303 ; B passo a passo = 18.23303 
+
+Diferença de volume entre S = 26 e S = 20:
+ idade  v_s20  v_s26 diferenca_abs_m3ha razao_s26_s20
+  2.62  34.46  63.54              29.07          1.84
+  3.62  63.55 106.73              43.18          1.68
+  4.62  89.91 143.22              53.32          1.59
+  5.62 112.42 173.10              60.67          1.54
+  6.62 131.40 197.56              66.16          1.50
+  7.62 147.42 217.80              70.38          1.48
+  8.62 161.04 234.74              73.70          1.46
+  9.62 172.71 249.08              76.37          1.44
+
+Idade de rotação técnica (ICA = IMA):
+ sitio idade_rotacao_anos volume_na_rotacao_m3ha ima_na_rotacao_m3ha
+    20              6.332                  126.3               19.94
+    22              6.305                  138.4               21.95
+    24              5.594                  153.4               27.42
+    26              5.453                  168.5               30.90
+ extrapolacao idade_rotacao_eq1_reduzida
+        FALSE                      6.539
+        FALSE                      6.358
+        FALSE                      5.492
+        FALSE                      5.196
+
+Arquivos gravados em saidas :
+ [1] "condicao_inicial.csv"       "desvio_eq3_por_parcela.csv"
+ [3] "diferenca_entre_sitios.csv" "equacoes_clutter.csv"      
+ [5] "grafico_curva_producao.png" "grafico_ica_ima.png"       
+ [7] "grafico_residuos.png"       "grafico_validacao_eq3.png" 
+ [9] "idade_rotacao_tecnica.csv"  "log_execucao.txt"          
+[11] "metricas_ajuste.csv"        "pares_validacao_eq3.csv"   
+[13] "prognose_producao.csv"      "teste_parcela_T6P1.csv"    
