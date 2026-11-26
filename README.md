@@ -23,6 +23,7 @@ desafio-09-modelo-clutter/
     ├── diferenca_entre_sitios.csv
     ├── pares_validacao_eq3.csv
     ├── teste_parcela_T6P1.csv
+    ├── desvio_eq3_por_parcela.csv
     ├── grafico_residuos.png
     ├── grafico_validacao_eq3.png
     └── log_execucao.txt
