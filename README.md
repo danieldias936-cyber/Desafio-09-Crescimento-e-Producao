@@ -1,67 +1,106 @@
-# Desafio 09 — Crescimento e produção pelo modelo de Clutter
+<div align="center">
 
-Projeto C531, com 9 parcelas permanentes e 43 medições feitas entre 2,6 e 6,4 anos. Este desafio ajusta o sistema de Clutter (1963), gera a prognose de área basal e volume para os sítios S = 20, 22, 24 e 26 m e identifica a idade de rotação técnica (ICA = IMA) de cada sítio.
+# 🌲 Desafio 09 — Crescimento e produção (Clutter)
 
-## Estrutura da pasta
+**Prognose de área basal e volume e idade técnica de corte**
 
-```
-desafio-09-modelo-clutter/
-├── README.md
-├── relatorio.md
-├── desafio09_modelo_clutter.R
+![R](https://img.shields.io/badge/R-4.3-276DC3?logo=r&logoColor=white) ![Disciplina](https://img.shields.io/badge/Mensura%C3%A7%C3%A3o%20Florestal-ICA%2FUFMG-2E7D32) ![Semestre](https://img.shields.io/badge/semestre-2026%2F2-6D4C41) ![Status](https://img.shields.io/badge/status-conclu%C3%ADdo-success)
+
+*Disciplina Mensuração Florestal · Programa de Pós-Graduação em Ciências Florestais · ICA/UFMG*
+
+</div>
+
+## 📋 Objetivo
+
+Ajustar o sistema de equações compatíveis de Clutter (1963), gerar a prognose de área basal e volume para diferentes índices de sítio e identificar a idade técnica de corte (ICA = IMA).
+
+## 🗂️ Dados
+
+Projeto C531: 9 parcelas permanentes e 43 medições entre 2,6 e 6,4 anos. Entrada principal: [`dados/base_consolidada_sitio.csv`](dados/base_consolidada_sitio.csv), gerada no [Desafio 08](https://github.com/danieldias936-cyber/desafio-08).
+
+## 🔧 Métodos
+
+- **Eq. 1** (área basal futura) e **Eq. 2** (volume) do sistema de Clutter, ajustadas por regressão.
+- **Eq. 3**: volume futuro compatível, validado com pares de medições.
+- Prognose para S = 20, 22, 24 e 26 m e idade técnica de corte no cruzamento de ICA e IMA.
+
+## 📈 Principais resultados
+
+| Equação | R² | Syx (%) |
+|---|:-:|:-:|
+| Eq. 1 — área basal | 0,968 | 3,59 |
+| Eq. 2 — volume | 0,987 | 4,97 |
+| Eq. 3 — validação | 0,954 | 6,85 |
+
+| Sítio (m) | Idade técnica de corte (anos) | Volume (m³/ha) | IMA (m³/ha/ano) |
+|:-:|:-:|:-:|:-:|
+| 20 | 6,3 | 126,3 | 19,9 |
+| 22 | 6,3 | 138,4 | 22,0 |
+| 24 | 5,6 | 153,4 | 27,4 |
+| 26 | 5,5 | 168,5 | 30,9 |
+
+- Quanto melhor o sítio, maior a produção e mais cedo o IMA atinge o máximo.
+
+<p align="center">
+  <img src="resultados/figuras/grafico_ica_ima.png" alt="ICA e IMA por índice de sítio e idade técnica de corte" width="720"><br>
+  <sub><b>ICA e IMA por índice de sítio e idade técnica de corte</b></sub>
+</p>
+
+<p align="center">
+  <img src="resultados/figuras/grafico_curva_producao.png" alt="Curvas de produção em volume por sítio" width="720"><br>
+  <sub><b>Curvas de produção em volume por sítio</b></sub>
+</p>
+
+## 📁 Estrutura do repositório
+
+```text
+desafio-09/
 ├── dados/
-│   ├── base_consolidada_sitio.csv     # saída do Desafio 08 (entrada principal)
+│   ├── base_consolidada_sitio.csv     # saída do Desafio 08
 │   └── Dados_Clutter_original.xlsx    # usada só se o CSV não existir
-└── saidas/
-    ├── equacoes_clutter.csv           # coeficientes das Eq. 1 e 2   (exigido)
-    ├── metricas_ajuste.csv            # R², Syx, Syx%, viés, RMSE    (exigido)
-    ├── prognose_producao.csv          # sitio, idade, area_basal_m2ha, volume_m3ha, ica_m3ha, ima_m3ha  (exigido)
-    ├── grafico_curva_producao.png     # (exigido)
-    ├── grafico_ica_ima.png            # (exigido)
-    ├── idade_rotacao_tecnica.csv
-    ├── condicao_inicial.csv
-    ├── diferenca_entre_sitios.csv
-    ├── pares_validacao_eq3.csv
-    ├── teste_parcela_T6P1.csv
-    ├── grafico_residuos.png
-    ├── grafico_validacao_eq3.png
-    └── log_execucao.txt
+├── scripts/
+│   └── 01_modelo_clutter.R
+├── resultados/
+│   ├── tabelas/          # equações, métricas, prognose, idade de rotação
+│   ├── figuras/
+│   └── log_execucao.txt
+└── docs/
+    ├── relatorio.md
+    └── metodologia_detalhada.md
 ```
 
-## Como executar
+## ▶️ Como executar
 
-Na pasta `desafio-09-modelo-clutter/`:
+A partir da raiz do repositório:
+
+```r
+install.packages(c("readxl", "ggplot2"))
+```
 
 ```bash
-Rscript desafio09_modelo_clutter.R
+LC_ALL=C.UTF-8 Rscript scripts/01_modelo_clutter.R
 ```
 
-O script usa os pacotes `ggplot2` e `readxl` (este último só se o CSV do Desafio 08 não estiver na pasta `dados/`) e foi testado no R 4.3.3.
+## 📄 Documentos
 
-## Equações
+- 📊 [Relatório](docs/relatorio.md)
+- 🔍 [Metodologia detalhada](docs/metodologia_detalhada.md)
 
-| Equação | Forma | Dados do ajuste |
-|---|---|---|
-| 1 — projeção de área basal | ln(B2) = (I1/I2)·ln(B1) + a0·(1 − I1/I2) + a1·(1 − I1/I2)·S | 34 pares de medições sucessivas; regressão linear sem intercepto em y = ln(B2) − (I1/I2)·ln(B1) |
-| 2 — volume estático | ln(V) = b0 + b1·(1/I) + b2·S + b3·ln(B) | 43 medições |
-| 3 — volume compatível | B2 pela Eq. 1 e, em seguida, V2 pela Eq. 2 avaliada em I2 (forma **sequencial**) | — |
+## 🧭 Série de desafios
 
-O script também calcula a forma analítica da Eq. 3 (a Eq. 1 substituída na Eq. 2) e confirma que dá o mesmo resultado da forma sequencial.
+| # | Desafio | |
+|:-:|---|:-:|
+| 01 | [Diâmetro](https://github.com/danieldias936-cyber/desafio-diametro-eucalipto) | |
+| 02 | [Altura e relação hipsométrica](https://github.com/danieldias936-cyber/desafio_altura) | |
+| 03 | [Volume e forma](https://github.com/danieldias936-cyber/desafio_volume-e-forma) | |
+| 04 | [Volume reduzido e equações de volume](https://github.com/danieldias936-cyber/desafio-04-volume-reduzido-e-tabela) | |
+| 05 | [Taper e sortimento](https://github.com/danieldias936-cyber/desafio_taper_e_sortimento) | |
+| 06 | [Amostragem de Bitterlich](https://github.com/danieldias936-cyber/desafio-06-bitterlich) | |
+| 07 | [Classificação de sítios florestais](https://github.com/danieldias936-cyber/desafio-07-classificacao-sitio) | |
+| 08 | [Validação do índice de sítio](https://github.com/danieldias936-cyber/desafio-08) | |
+| **09** | **Crescimento e produção (Clutter)** | 📍 você está aqui |
 
-## Condição inicial e incremento de idade da prognose
+## 👤 Autor
 
-- **Idade inicial (I0): 2,62 anos**, a média das idades da primeira medição das 9 parcelas, comum aos quatro sítios.
-- **Área basal inicial (B0):** a média da área basal na primeira medição das parcelas de cada sítio.
-
-| Sítio (m) | B0 (m²/ha) | Parcelas |
-|---|---|---|
-| 20 | 6,49 | 2 |
-| 22 | 6,85 | 3 |
-| 24 | 8,93 | 3 |
-| 26 | 9,78 | 1 |
-
-- **Incremento de idade: 1 ano** (2,62; 3,62; …; 9,62).
-- **ICA(I) = V(I) − V(I − 1)** e **IMA(I) = V(I)/I**.
-- A **idade de rotação técnica** é obtida numericamente (`uniroot`) como a idade contínua em que ICA = IMA.
-
-**Horizonte.** A maior idade observada é 6,37 anos. A tabela foi estendida até 9,62 anos para mostrar o comportamento das curvas depois do cruzamento de ICA e IMA. As linhas com `extrapolacao = TRUE` em `prognose_producao.csv` estão fora da amplitude dos dados e devem ser lidas com cautela. As quatro idades de rotação técnica ficaram **dentro** da amplitude observada.
+**Daniel Dias** · [@danieldias936-cyber](https://github.com/danieldias936-cyber)  
+Mestrado em Ciências Florestais — ICA/UFMG, Montes Claros (MG)
