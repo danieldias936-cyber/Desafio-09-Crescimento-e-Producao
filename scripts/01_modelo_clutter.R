@@ -19,8 +19,10 @@
 
 suppressPackageStartupMessages(library(ggplot2))
 
-pasta_saida <- "saidas"
-dir.create(pasta_saida, showWarnings = FALSE)
+pasta_saida <- "resultados/tabelas"
+pasta_fig <- "resultados/figuras"
+dir.create(pasta_saida, recursive = TRUE, showWarnings = FALSE)
+dir.create(pasta_fig, recursive = TRUE, showWarnings = FALSE)
 
 sitios        <- c(20, 22, 24, 26)  # classes de sítio da base (m)
 passo_idade   <- 1                  # incremento de idade da prognose (anos)
@@ -336,7 +338,7 @@ g_prod <- ggplot() +
        title = "Curvas de produção em volume — modelo de Clutter",
        subtitle = "Linhas: prognose; pontos claros: volumes observados nas parcelas") +
   tema
-ggsave(file.path(pasta_saida, "grafico_curva_producao.png"), g_prod, width = 7.5, height = 5.5, dpi = 300)
+ggsave(file.path(pasta_fig, "grafico_curva_producao.png"), g_prod, width = 7.5, height = 5.5, dpi = 300)
 
 # ICA e IMA por sítio
 inc <- rbind(data.frame(sitio = curvas$sitio, idade = curvas$idade, valor = curvas$ica_m3ha, curva = "ICA"),
@@ -363,7 +365,7 @@ g_inc <- ggplot(inc, aes(idade, valor, linetype = curva)) +
        title = "Incremento corrente anual (ICA) e incremento médio anual (IMA)",
        subtitle = "Linha vermelha: idade de rotação técnica; área cinza: extrapolação") +
   tema
-ggsave(file.path(pasta_saida, "grafico_ica_ima.png"), g_inc, width = 8, height = 6.5, dpi = 300)
+ggsave(file.path(pasta_fig, "grafico_ica_ima.png"), g_inc, width = 8, height = 6.5, dpi = 300)
 
 # Resíduos e validação
 res_df <- rbind(
@@ -380,7 +382,7 @@ g_res <- ggplot(res_df, aes(estimado, residuo_pct)) +
   facet_wrap(~ painel, scales = "free_x", ncol = 3) +
   labs(x = "Valor estimado", y = "Resíduo (%)", title = "Distribuição dos resíduos") +
   theme_bw(base_size = 10)
-ggsave(file.path(pasta_saida, "grafico_residuos.png"), g_res, width = 9, height = 3.6, dpi = 300)
+ggsave(file.path(pasta_fig, "grafico_residuos.png"), g_res, width = 9, height = 3.6, dpi = 300)
 
 g_val <- ggplot(pares, aes(v2_est, v2)) +
   geom_abline(slope = 1, intercept = 0, colour = "grey40") +
@@ -389,6 +391,6 @@ g_val <- ggplot(pares, aes(v2_est, v2)) +
        y = expression("V2 observado (m"^3*" ha"^-1*")"), colour = "Sítio (m)",
        title = "Validação da equação de volume compatível") +
   coord_equal() + tema
-ggsave(file.path(pasta_saida, "grafico_validacao_eq3.png"), g_val, width = 5.5, height = 5.8, dpi = 300)
+ggsave(file.path(pasta_fig, "grafico_validacao_eq3.png"), g_val, width = 5.5, height = 5.8, dpi = 300)
 
 cat("\nArquivos gravados em", pasta_saida, ":\n"); print(list.files(pasta_saida))

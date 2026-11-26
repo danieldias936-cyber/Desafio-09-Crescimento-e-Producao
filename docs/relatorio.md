@@ -28,13 +28,13 @@ A base é a `base_consolidada_sitio.csv` do Desafio 08: 9 parcelas do projeto C5
 
 As métricas foram calculadas na escala original, depois da retransformação logarítmica (sem fator de correção). Os resíduos ficaram entre cerca de −12% e +12%, sem tendência visível em relação aos valores estimados:
 
-![Resíduos](saidas/grafico_residuos.png)
+![Resíduos](../resultados/figuras/grafico_residuos.png)
 
 **Termo de sítio na Eq. 1.** O coeficiente a1 não foi significativo a 5% (p = 0,129). Ou seja, com estes dados não há evidência forte de que o sítio altere a trajetória de projeção da área basal, além do efeito que já entra pela área basal inicial. Como teste de sensibilidade, ajustou-se a forma reduzida, sem a1, que deu a0 = 3,35355. É exatamente o valor usado na planilha de referência `prognose_clutter.xlsx`. A planilha também ajusta a Eq. 2 com os 34 pares (em I2) e não com as 43 medições; refazendo esse ajuste, o script reproduz os coeficientes dela (1,498; −1,349; 0,0162; 1,197). A forma completa foi mantida porque é a pedida no enunciado. As idades de rotação com a forma reduzida estão na Seção 4.
 
 ## 3. Coerência da equação de volume compatível
 
-![Validação da Eq. 3](saidas/grafico_validacao_eq3.png)
+![Validação da Eq. 3](../resultados/figuras/grafico_validacao_eq3.png)
 
 Projetando V2 a partir de B1 nos 34 pares, o viés médio foi de −0,45 m³/ha, com RMSE de 6,2%. A projeção acompanha bem os volumes observados. Na parcela T6-P1, projetada a partir da primeira medição (2,69 anos), os desvios foram de −11,7% aos 3,7 anos, −8,0% aos 4,7, −0,6% aos 5,7 e −3,2% aos 6,4 anos.
 
@@ -42,7 +42,7 @@ Os maiores desvios médios por parcela aparecem em T3-P1 (+10,0%, superestimativ
 
 ## 4. Prognose de produção
 
-![Curvas de produção](saidas/grafico_curva_producao.png)
+![Curvas de produção](../resultados/figuras/grafico_curva_producao.png)
 
 | Idade (anos) | V S20 | V S22 | V S24 | V S26 | Diferença S26 − S20 | Razão S26/S20 |
 |---|---|---|---|---|---|---|
@@ -53,13 +53,13 @@ Os maiores desvios médios por parcela aparecem em T3-P1 (+10,0%, superestimativ
 | 6,62* | 131,4 | 144,6 | 176,5 | 197,6 | 66,2 | 1,50 |
 | 9,62* | 172,7 | 189,8 | 224,0 | 249,1 | 76,4 | 1,44 |
 
-Volumes em m³/ha. *Extrapolação: acima da idade máxima observada (6,37 anos). A tabela completa está em `saidas/prognose_producao.csv`.
+Volumes em m³/ha. *Extrapolação: acima da idade máxima observada (6,37 anos). A tabela completa está em `../resultados/tabelas/prognose_producao.csv`.
 
 A produção cresce de forma consistente com o sítio. A **diferença absoluta** de volume entre o melhor e o pior sítio **aumenta** com a idade, de 29 para 61 m³/ha entre 2,6 e 5,6 anos. A **diferença relativa diminui**: o sítio 26 produz 84% a mais que o sítio 20 aos 2,6 anos e 54% a mais aos 5,6 anos. Parte da diferença inicial vem da área basal de partida, que é maior nos sítios melhores. Como o termo de sítio da Eq. 1 é pequeno, a área basal dos sítios converge em termos relativos: a razão entre S26 e S20 cai de 1,51 aos 2,6 anos para 1,31 aos 5,6 anos, enquanto a diferença absoluta fica entre 3,3 e 4,2 m²/ha (`prognose_producao.csv`).
 
 ## 5. ICA, IMA e idade de rotação técnica
 
-![ICA e IMA](saidas/grafico_ica_ima.png)
+![ICA e IMA](../resultados/figuras/grafico_ica_ima.png)
 
 | Sítio (m) | Idade de rotação (anos) | Volume na rotação (m³/ha) | IMA na rotação (m³/ha/ano) | Rotação com a Eq. 1 reduzida (anos) |
 |---|---|---|---|---|
