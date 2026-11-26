@@ -16,7 +16,7 @@ Ajustar o sistema de equações compatíveis de Clutter (1963), gerar a prognose
 
 ## 🗂️ Dados
 
-Projeto C531: 9 parcelas permanentes e 43 medições entre 2,6 e 6,4 anos. Entrada principal: [`dados/base_consolidada_sitio.csv`](dados/base_consolidada_sitio.csv), gerada no [Desafio 08](https://github.com/danieldias936-cyber/desafio-08).
+Projeto C531: 9 parcelas permanentes e 43 medições entre 2,6 e 6,4 anos. Entrada principal: [`dados/base_consolidada_sitio.csv`](dados/base_consolidada_sitio.csv), gerada no [Desafio 08](https://github.com/danieldias936-cyber/Desafio-08-Validacao-do-Sitio).
 
 ## 🔧 Métodos
 
@@ -54,7 +54,7 @@ Projeto C531: 9 parcelas permanentes e 43 medições entre 2,6 e 6,4 anos. Entra
 ## 📁 Estrutura do repositório
 
 ```text
-desafio-09/
+Desafio-09-Crescimento-e-Producao/
 ├── dados/
 │   ├── base_consolidada_sitio.csv     # saída do Desafio 08
 │   └── Dados_Clutter_original.xlsx    # usada só se o CSV não existir
@@ -90,14 +90,14 @@ LC_ALL=C.UTF-8 Rscript scripts/01_modelo_clutter.R
 
 | # | Desafio | |
 |:-:|---|:-:|
-| 01 | [Diâmetro](https://github.com/danieldias936-cyber/desafio-diametro-eucalipto) | |
-| 02 | [Altura e relação hipsométrica](https://github.com/danieldias936-cyber/desafio_altura) | |
-| 03 | [Volume e forma](https://github.com/danieldias936-cyber/desafio_volume-e-forma) | |
-| 04 | [Volume reduzido e equações de volume](https://github.com/danieldias936-cyber/desafio-04-volume-reduzido-e-tabela) | |
-| 05 | [Taper e sortimento](https://github.com/danieldias936-cyber/desafio_taper_e_sortimento) | |
-| 06 | [Amostragem de Bitterlich](https://github.com/danieldias936-cyber/desafio-06-bitterlich) | |
-| 07 | [Classificação de sítios florestais](https://github.com/danieldias936-cyber/desafio-07-classificacao-sitio) | |
-| 08 | [Validação do índice de sítio](https://github.com/danieldias936-cyber/desafio-08) | |
+| 01 | [Diâmetro](https://github.com/danieldias936-cyber/Desafio-01-Diametro) | |
+| 02 | [Altura e relação hipsométrica](https://github.com/danieldias936-cyber/Desafio-02-Altura) | |
+| 03 | [Volume e forma](https://github.com/danieldias936-cyber/Desafio-03-Volume-e-Forma) | |
+| 04 | [Volume reduzido e equações de volume](https://github.com/danieldias936-cyber/Desafio-04-Volume-Reduzido-e-Tabela) | |
+| 05 | [Taper e sortimento](https://github.com/danieldias936-cyber/Desafio-05-Taper-e-Sortimento) | |
+| 06 | [Amostragem de Bitterlich](https://github.com/danieldias936-cyber/Desafio-06-Bitterlich) | |
+| 07 | [Classificação de sítios florestais](https://github.com/danieldias936-cyber/Desafio-07-Classificacao-de-Sitios) | |
+| 08 | [Validação do índice de sítio](https://github.com/danieldias936-cyber/Desafio-08-Validacao-do-Sitio) | |
 | **09** | **Crescimento e produção (Clutter)** | 📍 você está aqui |
 
 ## 👤 Autor
