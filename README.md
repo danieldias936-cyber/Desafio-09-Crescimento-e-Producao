@@ -96,7 +96,7 @@ LC_ALL=C.UTF-8 Rscript scripts/01_modelo_clutter.R
 | 04 | [Volume reduzido e equações de volume](https://github.com/danieldias936-cyber/desafio-04-volume-reduzido-e-tabela) | |
 | 05 | [Taper e sortimento](https://github.com/danieldias936-cyber/desafio_taper_e_sortimento) | |
 | 06 | [Amostragem de Bitterlich](https://github.com/danieldias936-cyber/desafio-06-bitterlich) | |
-| 07 | Classificação de sítios florestais | ⏳ |
+| 07 | [Classificação de sítios florestais](https://github.com/danieldias936-cyber/desafio-07-classificacao-sitio) | |
 | 08 | [Validação do índice de sítio](https://github.com/danieldias936-cyber/desafio-08) | |
 | **09** | **Crescimento e produção (Clutter)** | 📍 você está aqui |
 
